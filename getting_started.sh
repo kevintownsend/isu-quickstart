@@ -34,6 +34,15 @@ ls -l" > ${HOME}/bin/l
 fi
 
 if [ ! $(command -v python3) ]; then
+    if [[ $(hostname) =~ iastate ]]; then
+        wget https://www.python.org/ftp/python/3.5.0/Python-3.5.0a2.tgz
+        tar xzf Python-3.5.0a2.tgz
+        cd Python-3.5.0a2
+        ./configure --prefix=/var/tmp/
+        make
+        make install
+    fi
+
 #TODO: check for python3
 fi
 if [ ! $(command -v sshpass) ]; then
